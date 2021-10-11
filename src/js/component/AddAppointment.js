@@ -4,8 +4,12 @@ import { Context } from "../store/appContext";
 export const AddAppointment = () => {
 	const { store, actions } = useContext(Context);
 	const [toggle, setToggle] = useState(toggle);
+	const [ownerName, setOwnerName] = useState("");
+	const [petName, setPetName] = useState("");
+	const [aptDate, setAptDate] = useState("");
+	const [aptTime, setAptTime] = useState("");
+	const [aptNotes, setAptNotes] = useState("");
 
-	const appointmentData = store.data;
 	return (
 		<div>
 			<button className="col-12 rounded bd-solid-black bg-blue" onClick={() => setToggle(!toggle)}>
@@ -21,6 +25,7 @@ export const AddAppointment = () => {
 						</label>
 						<div className="mt-1 sm:mt-0 sm:col-span-2">
 							<input
+								onChange={element => setOwnerName(element.target.value)}
 								type="text"
 								name="ownerName"
 								id="ownerName"
@@ -35,6 +40,7 @@ export const AddAppointment = () => {
 						</label>
 						<div className="mt-1 sm:mt-0 sm:col-span-2">
 							<input
+								onChange={element => setPetName(element.target.value)}
 								type="text"
 								name="petName"
 								id="petName"
@@ -49,6 +55,7 @@ export const AddAppointment = () => {
 						</label>
 						<div className="mt-1 sm:mt-0 sm:col-span-2">
 							<input
+								onChange={element => setAptDate(element.target.value)}
 								type="date"
 								name="aptDate"
 								id="aptDate"
@@ -63,6 +70,7 @@ export const AddAppointment = () => {
 						</label>
 						<div className="mt-1 sm:mt-0 sm:col-span-2">
 							<input
+								onChange={element => setAptTime(element.target.value)}
 								type="time"
 								name="aptTime"
 								id="aptTime"
@@ -77,6 +85,7 @@ export const AddAppointment = () => {
 						</label>
 						<div className="mt-1 sm:mt-0 sm:col-span-2">
 							<textarea
+								onChange={element => setAptNotes(element.target.value)}
 								id="aptNotes"
 								name="aptNotes"
 								rows="3"
@@ -92,7 +101,7 @@ export const AddAppointment = () => {
 								type="submit"
 								className="ml-3 inline-flex justify-center bg-success"
 								onClick={() =>
-									actions.AddAppointmentDetail(petName, ownerName, aptDate, aptTime, aptNotes)
+									actions.addAppointmentDetail(ownerName, petName, aptDate, aptTime, aptNotes)
 								}>
 								Submit
 							</button>
