@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AppointmentData } from "./Data";
 
 export const AddAppointment = () => {
 	const [toggle, setToggle] = useState(toggle);
@@ -84,9 +85,7 @@ export const AddAppointment = () => {
 
 					<div className="pt-5">
 						<div className="flex justify-end">
-							<button
-								type="submit"
-								className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+							<button type="submit" className="ml-3 inline-flex justify-center bg-success">
 								Submit
 							</button>
 						</div>
