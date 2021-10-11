@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { AppointmentData } from "./Data";
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
 
 export const AddAppointment = () => {
+	const { store, actions } = useContext(Context);
 	const [toggle, setToggle] = useState(toggle);
+
+	const appointmentData = store.data;
 	return (
 		<div>
 			<button className="col-12 rounded bd-solid-black bg-blue" onClick={() => setToggle(!toggle)}>
@@ -85,7 +88,12 @@ export const AddAppointment = () => {
 
 					<div className="pt-5">
 						<div className="flex justify-end">
-							<button type="submit" className="ml-3 inline-flex justify-center bg-success">
+							<button
+								type="submit"
+								className="ml-3 inline-flex justify-center bg-success"
+								onClick={() =>
+									actions.AddAppointmentDetail(petName, ownerName, aptDate, aptTime, aptNotes)
+								}>
 								Submit
 							</button>
 						</div>
